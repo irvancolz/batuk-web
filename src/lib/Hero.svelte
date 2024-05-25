@@ -9,13 +9,16 @@
     gsap.registerPlugin(ScrollTrigger)
 
     onMount(() => {
-        const tl = gsap.timeline({defaults:{duration: .3}, scrollTrigger: {
+        const tl = gsap.timeline({ scrollTrigger: {
             trigger:'.container',
             start: "bottom 99%",
+            end: '+=1000px',
+            pin: true,
+            scrub: true
         }})
         tl.to('.outside_closed', { opacity: 0})
         .to('.light', { opacity: 0})
-        .to('.outside_open', { opacity: 0}, '.3s')
+        .to('.outside_open', { opacity: 0})
         .to('.background', { opacity: 0})
         .fromTo('.inside', {filter: 'brightness(0.1)'}, {filter: 'brightness(1)'})
 
