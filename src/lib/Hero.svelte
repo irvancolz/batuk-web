@@ -19,11 +19,11 @@
             scrub: true
         }})
         tl.to('.door', {rotateY: '-105deg', duration: 3})
-        .to('.door', {opacity: 0})
-        .to('.light', { opacity: 0})
-        .to('.background', { opacity: 0})
-        .to('.outside_open', { opacity: 0, scale: 1.5, duration: 3})
-        .fromTo('.inside', {filter: 'brightness(0.1)'}, {filter: 'brightness(1)'})
+        .to('.door', {opacity: 0, scale: 1.5, duration: 3})
+        .to('.light', { opacity: 0}, '<')
+        .to('.background', { opacity: 0}, '<')
+        .to('.outside_open', { opacity: 0, scale: 1.5, duration: 3}, '<')
+        .fromTo('.inside', {filter: 'brightness(0.1)', scale: 1.5, duration: 3}, {filter: 'brightness(1)', scale: 1, duration: 3})
 
     })
 
@@ -57,6 +57,7 @@
 
     .inside{
         filter: brightness(0.1);
+        transform-origin: 10% 50%;
     }
 
     .door{
