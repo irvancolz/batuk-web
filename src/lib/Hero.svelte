@@ -19,7 +19,7 @@
             scrub: true
         }})
         tl.to('.door', {rotateY: '-105deg', duration: 3})
-        .to('.door', {opacity: 0, scale: 1.5, duration: 3})
+        .fromTo('.door', {opacity: 1, scale: 1, xPercent: 0, duration: 3}, {opacity: 0, scale: 1.5, xPercent: -14, duration: 3})
         .to('.light', { opacity: 0}, '<')
         .to('.background', { opacity: 0}, '<')
         .to('.outside_open', { opacity: 0, scale: 1.5, duration: 3}, '<')
