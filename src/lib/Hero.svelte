@@ -19,11 +19,12 @@
             scrub: true
         }})
         tl.to('.door', {rotateY: '-105deg', duration: 3})
-        .fromTo('.door', {opacity: 1, scale: 1, xPercent: 0, duration: 3}, {opacity: 0, scale: 1.5, xPercent: -14, duration: 3})
+        .fromTo('.door', {opacity: 1, scale: 1, xPercent: 0, duration: 3, yPercent: 0}, {opacity: 0, scale: 1.5, xPercent: -17,yPercent: 3, duration: 3})
         .to('.light', { opacity: 0}, '<')
         .to('.background', { opacity: 0}, '<')
         .to('.outside_open', { opacity: 0, scale: 1.5, duration: 3}, '<')
-        .fromTo('.inside', {filter: 'brightness(0.1)', scale: 1.5, duration: 3}, {filter: 'brightness(1)', scale: 1, duration: 3})
+        .to('.inside', {filter: 'brightness(1)', duration: .3})
+        .fromTo('.inside', { scale: 1.5, duration: 3}, { scale: 1, duration: 3})
 
     })
 
@@ -50,6 +51,7 @@
 <style>
     .container{
         width: 100vw;
+        max-width: 100vw;
         aspect-ratio: 665/375;
         position: relative;
         overflow: hidden;
