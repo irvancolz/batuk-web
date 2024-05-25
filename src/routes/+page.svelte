@@ -1,8 +1,10 @@
 <script>
-  import {Hero} from "$lib";
+  import {Hero, IntroSection} from "$lib";
 
 </script>
+
 <Hero />
+<IntroSection />
 
 <style>
 
