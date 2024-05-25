@@ -2,6 +2,8 @@
     import img1 from '$lib/images/house1.png'
     import img2 from '$lib/images/house2.png'
     import img3 from '$lib/images/house3.png'
+    import doorFront from "$lib/images/Door.png"
+    import doorBack from "$lib/images/Door-back.png"
     import {gsap} from 'gsap';
     import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
   import { onMount } from 'svelte';
@@ -16,10 +18,11 @@
             pin: true,
             scrub: true
         }})
-        tl.to('.outside_closed', { opacity: 0})
+        tl.to('.door', {rotateY: '-135deg', duration: 3})
+        .to('.door', {opacity: 0})
         .to('.light', { opacity: 0})
-        .to('.outside_open', { opacity: 0})
         .to('.background', { opacity: 0})
+        .to('.outside_open', { opacity: 0, scale: 1.5, duration: 3})
         .fromTo('.inside', {filter: 'brightness(0.1)'}, {filter: 'brightness(1)'})
 
         // addEventListener('scroll', () => tl.play())
@@ -39,18 +42,42 @@
     </div>
     <div class="background"></div>
     <img class='outside_open' src={img2} alt="">
-    <img  class="outside_closed" src={img1} alt="">
+    <div class="door">
+        <img class="door_back" src={doorBack} alt="">
+        <img class="door_front" src={doorFront} alt="">
+    </div>
+    <!-- <img  class="outside_closed" src={img1} alt=""> -->
 </div>
 
 <style>
     .container{
+        width: 100vw;
+        aspect-ratio: 665/375;
         position: relative;
-        height: 100vh;
         overflow: hidden;
     }
 
     .inside{
         filter: brightness(0.1);
+    }
+
+    .door{
+        position: absolute;
+        aspect-ratio: 1028/1784;
+        width: 17.5vw;
+        top: 50%;
+        left: 50%;
+        translate: -52% -44%;
+        transform-style: preserve-3d;
+        transform-origin: left;
+    }
+
+    .door img{
+        min-height: 100%;
+        min-width: 100%;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
     }
 
     img, .background{
@@ -63,8 +90,15 @@
     }
 
     .background{
+        background-color: #26262636;
         transition: backround-color .2s ease-out;
-        animation: party_bg 2s linear infinite;
+        /* animation: party_bg 2s linear infinite; */
+    }
+
+    .outside_open{
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
     }
 
     .light{

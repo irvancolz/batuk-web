@@ -6,24 +6,24 @@ import Lenis from "@studio-freight/lenis";
 
 
 
-  onMount(() => {
-    const lenis = new Lenis({
-      duration: 1.5,
-      easing: (x) => 1 - Math.pow(1 - x, 4),
-    });
+  // onMount(() => {
+  //   const lenis = new Lenis({
+  //     duration: 1.5,
+  //     easing: (x) => 1 - Math.pow(1 - x, 4),
+  //   });
 
-    function lenisRaf(time) {
-      lenis.raf(time);
-      ScrollTrigger.update();
-      requestAnimationFrame(lenisRaf);
-    }
+  //   function lenisRaf(time) {
+  //     lenis.raf(time);
+  //     ScrollTrigger.update();
+  //     requestAnimationFrame(lenisRaf);
+  //   }
 
-    lenis.on("scroll", () => {
-      ScrollTrigger.update();
-    });
+  //   lenis.on("scroll", () => {
+  //     ScrollTrigger.update();
+  //   });
 
-    requestAnimationFrame(lenisRaf);
-  })
+  //   requestAnimationFrame(lenisRaf);
+  // })
 
 </script>
 <Hero />
