@@ -18,7 +18,7 @@
             pin: true,
             scrub: true
         }})
-        tl.to('.door', {rotateY: '-135deg', duration: 3})
+        tl.to('.door', {rotateY: '-180deg', duration: 3})
         .to('.door', {opacity: 0})
         .to('.light', { opacity: 0})
         .to('.background', { opacity: 0})
