@@ -18,14 +18,13 @@
             pin: true,
             scrub: true
         }})
-        tl.to('.door', {rotateY: '-180deg', duration: 3})
+        tl.to('.door', {rotateY: '-105deg', duration: 3})
         .to('.door', {opacity: 0})
         .to('.light', { opacity: 0})
         .to('.background', { opacity: 0})
         .to('.outside_open', { opacity: 0, scale: 1.5, duration: 3})
         .fromTo('.inside', {filter: 'brightness(0.1)'}, {filter: 'brightness(1)'})
 
-        // addEventListener('scroll', () => tl.play())
     })
 
 </script>
@@ -46,7 +45,6 @@
         <img class="door_back" src={doorBack} alt="">
         <img class="door_front" src={doorFront} alt="">
     </div>
-    <!-- <img  class="outside_closed" src={img1} alt=""> -->
 </div>
 
 <style>
@@ -70,6 +68,8 @@
         translate: -52% -44%;
         transform-style: preserve-3d;
         transform-origin: left;
+        /* perspective: -1200px; */
+        transform: perspective(2300px);
     }
 
     .door img{
