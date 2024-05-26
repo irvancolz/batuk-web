@@ -1,5 +1,4 @@
 <script>
-    import img1 from '$lib/images/house1.png'
     import img2 from '$lib/images/house2.png'
     import img3 from '$lib/images/house3.png'
     import doorFront from "$lib/images/Door.png"
@@ -42,8 +41,8 @@
     <div class="background"></div>
     <img class='outside_open' src={img2} alt="">
     <div class="door">
-        <img class="door_back" src={doorBack} alt="">
         <img class="door_front" src={doorFront} alt="">
+        <img class="door_back" src={doorBack} alt="">
     </div>
 </div>
 
@@ -70,16 +69,22 @@
         translate: -52% -44%;
         transform-style: preserve-3d;
         transform-origin: left;
-        /* perspective: -1200px; */
         transform: perspective(2300px);
     }
 
     .door img{
+        position: absolute;
+        inset: 0 0 0 0;
         min-height: 100%;
         min-width: 100%;
         height: 100%;
         width: 100%;
         object-fit: cover;
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+    }
+    .door_back{
+        transform: rotateY(-180deg);
     }
 
     img, .background{
