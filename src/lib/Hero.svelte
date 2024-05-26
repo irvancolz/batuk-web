@@ -125,13 +125,10 @@
         border-top: 900px solid var(--border-col);
         border-left: 1rem solid transparent;
         border-right: 1rem solid transparent; 
-        height: 900px;
-        /* height: 0px; */
+        height: 0px;
         width: 3rem;
-        /* box-shadow: inset 0 -900px 0 0 var(--border-col), 1rem 0 0 0 transparent, -1rem 0 0 0 transparent; */
-        -webkit-box-shadow: -1px 0px 40px 3px var(--border-col);
-        -moz-box-shadow: -1px 0px 40px 3px var(--border-col);
-    }
+        filter: blur(3px) drop-shadow(0px 0px 20px white);
+    } 
 
     .light_beige{
         --border-col: rgba(245, 245, 220, 0.63);
