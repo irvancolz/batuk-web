@@ -16,7 +16,7 @@
             pin: true,
             scrub: true
         }})
-        tl.to('.door', {rotateY: '-105deg', duration: 5})
+        tl.to('.door', {rotateY: '-105deg', duration: 10})
         .fromTo('.door', { scale: 1, xPercent: 0, duration: 3, yPercent: 0}, { scale: 1.5, xPercent: -25,yPercent: 3, duration: 3})
         .fromTo('.door_front', {opacity: 1,   duration: 3, }, {opacity: 0,   duration: 3}, '<')
         .fromTo('.door_back', {opacity: 1,   duration: 3, }, {opacity: 0,  duration: 3}, '<')
