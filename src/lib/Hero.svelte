@@ -68,7 +68,7 @@
         width: 17.5vw;
         top: 50%;
         left: 50%;
-        translate: -52% -44%;
+        translate: -52% -42.90%;
         transform-style: preserve-3d;
         transform-origin: left;
         transform: perspective(2300px);
