@@ -17,7 +17,9 @@
             scrub: true
         }})
         tl.to('.door', {rotateY: '-105deg', duration: 5})
-        .fromTo('.door', {opacity: 1, scale: 1, xPercent: 0, duration: 3, yPercent: 0}, {opacity: 0, scale: 1.5, xPercent: -25,yPercent: 3, duration: 3})
+        .fromTo('.door', { scale: 1, xPercent: 0, duration: 3, yPercent: 0}, { scale: 1.5, xPercent: -25,yPercent: 3, duration: 3})
+        .fromTo('.door_front', {opacity: 1,   duration: 3, }, {opacity: 0,   duration: 3}, '<')
+        .fromTo('.door_back', {opacity: 1,   duration: 3, }, {opacity: 0,  duration: 3}, '<')
         .to('.light', { opacity: 0}, '<')
         .to('.background', { opacity: 0}, '<')
         .to('.outside_open', { opacity: 0, scale: 1.5, duration: 3}, '<')
@@ -75,11 +77,11 @@
     .door img{
         position: absolute;
         inset: 0 0 0 0;
+        object-fit: contain;
         min-height: 100%;
         min-width: 100%;
-        height: 100%;
         width: 100%;
-        object-fit: cover;
+        height: 100%;
         -webkit-backface-visibility: hidden; /* Safari */
         backface-visibility: hidden;
     }
