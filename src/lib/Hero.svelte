@@ -17,14 +17,15 @@
             scrub: true
         }})
         tl.to('.door', {rotateY: '-105deg', duration: 10})
-        .fromTo('.door', { scale: 1, xPercent: 0, duration: 3, yPercent: 0}, { scale: 1.5, xPercent: -25,yPercent: 3, duration: 3})
+        .fromTo('.door', { scale: 1, xPercent: 0, duration: 3,}, { scale: 1.2, xPercent: -10, duration: 3})
         .fromTo('.door_front', {opacity: 1,   duration: 3, }, {opacity: 0,   duration: 3}, '<')
         .fromTo('.door_back', {opacity: 1,   duration: 3, }, {opacity: 0,  duration: 3}, '<')
         .to('.light', { opacity: 0}, '<')
         .to('.background', { opacity: 0}, '<')
-        .to('.outside_open', { opacity: 0, scale: 1.5, duration: 3}, '<')
+        .to('.door_overlay', { opacity: 0}, '<')
+        .to('.outside_open', { opacity: 0, scale: 1.2, duration: 3}, '<')
         .to('.inside', {filter: 'brightness(1)', duration: .3})
-        .fromTo('.inside', { scale: 1.5, duration: 3}, { scale: 1, duration: 3})
+        .fromTo('.inside', { scale: 1.25, duration: 3}, { scale: 1, duration: 3})
 
     })
 
@@ -42,6 +43,7 @@
     </div>
     <div class="background"></div>
     <img class='outside_open' src={img2} alt="">
+    <div class="door_overlay"></div>
     <div class="door">
         <img class="door_front" src={doorFront} alt="">
         <img class="door_back" src={doorBack} alt="">
@@ -62,22 +64,27 @@
         transform-origin: 10% 50%;
     }
 
-    .door{
+
+    .door, .door_overlay{
         position: absolute;
-        aspect-ratio: 1028/1784;
+        aspect-ratio: 1034/1800;
         width: 17.5vw;
         top: 50%;
         left: 50%;
-        translate: -52% -42.90%;
+        translate: -52% -43%;
+    }
+    .door{
         transform-style: preserve-3d;
         transform-origin: left;
         transform: perspective(2300px);
     }
-
+    .door_overlay{
+        background-color: #180801;
+    }
     .door img{
         position: absolute;
         inset: 0 0 0 0;
-        object-fit: contain;
+        object-fit: cover;
         min-height: 100%;
         min-width: 100%;
         width: 100%;
@@ -117,20 +124,22 @@
         bottom: 0;
         border-top: 900px solid var(--border-col);
         border-left: 1rem solid transparent;
-        border-right: 1rem solid transparent;
-        height: 0px;
+        border-right: 1rem solid transparent; 
+        height: 900px;
+        /* height: 0px; */
         width: 3rem;
+        /* box-shadow: inset 0 -900px 0 0 var(--border-col), 1rem 0 0 0 transparent, -1rem 0 0 0 transparent; */
+        -webkit-box-shadow: -1px 0px 40px 3px var(--border-col);
+        -moz-box-shadow: -1px 0px 40px 3px var(--border-col);
     }
 
     .light_beige{
         --border-col: rgba(245, 245, 220, 0.63);
     }
-    .light_purple{
-    }
 
     .light_left{
         rotate: 40deg;
-        animation: light_left 2.5s linear infinite;
+        animation: light_left 2.5s ease-in-out infinite;
     }
 
     .light_left.light_beige.first, .light_right.light_beige.first{
@@ -142,7 +151,7 @@
 
     .light_right{
         rotate: -40deg;
-        animation: light_right 2.5s linear infinite;
+        animation: light_right 2.5s ease-in-out infinite;
         right: 0;
     }
 
