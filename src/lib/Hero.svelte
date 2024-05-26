@@ -13,12 +13,11 @@
     onMount(() => {
         const tl = gsap.timeline({ scrollTrigger: {
             trigger:'.container',
-            start: "bottom 99%",
             end: '+=1000px',
             pin: true,
             scrub: true
         }})
-        tl.to('.door', {rotateY: '-105deg', duration: 3})
+        tl.to('.door', {rotateY: '-105deg', duration: 5})
         .fromTo('.door', {opacity: 1, scale: 1, xPercent: 0, duration: 3, yPercent: 0}, {opacity: 0, scale: 1.5, xPercent: -25,yPercent: 3, duration: 3})
         .to('.light', { opacity: 0}, '<')
         .to('.background', { opacity: 0}, '<')
