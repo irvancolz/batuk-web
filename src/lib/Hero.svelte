@@ -10,22 +10,23 @@
     gsap.registerPlugin(ScrollTrigger)
 
     onMount(() => {
+        const fadeDuration = 10
         const tl = gsap.timeline({ scrollTrigger: {
             trigger:'.container',
             end: '+=1000px',
             pin: true,
             scrub: true
         }})
-        tl.to('.door', {rotateY: '-105deg', duration: 10})
-        .fromTo('.door', { scale: 1, xPercent: 0, duration: 3,}, { scale: 1.2, xPercent: -10, duration: 3})
-        .fromTo('.door_front', {opacity: 1,   duration: 3, }, {opacity: 0,   duration: 3}, '<')
-        .fromTo('.door_back', {opacity: 1,   duration: 3, }, {opacity: 0,  duration: 3}, '<')
+        tl.to('.door', {rotateY: '-105deg', duration: 20})
+        .fromTo('.door', { scale: 1, xPercent: 0, duration: 3,}, { scale: 1.2, xPercent: -10, duration: fadeDuration})
         .to('.light', { opacity: 0}, '<')
+        .fromTo('.door_front', {opacity: 1,   duration: fadeDuration, }, {opacity: 0,   duration: 3}, '<')
+        .fromTo('.door_back', {opacity: 1,   duration: fadeDuration, }, {opacity: 0,  duration: 3}, '<')
         .to('.background', { opacity: 0}, '<')
         .to('.door_overlay', { opacity: 0}, '<')
-        .to('.outside_open', { opacity: 0, scale: 1.2, duration: 3}, '<')
+        .to('.outside_open', { opacity: 0, scale: 1.2, duration: fadeDuration}, '<')
         .to('.inside', {filter: 'brightness(1)', duration: .3})
-        .fromTo('.inside', { scale: 1.25, duration: 3}, { scale: 1, duration: 3})
+        .fromTo('.inside', { scale: 1.25, duration: fadeDuration}, { scale: 1, duration: fadeDuration})
 
     })
 
@@ -79,7 +80,7 @@
         transform: perspective(2300px);
     }
     .door_overlay{
-        background-color: #180801;
+        background-color: #0b0401;
     }
     .door img{
         position: absolute;
@@ -127,7 +128,7 @@
         border-right: 1rem solid transparent; 
         height: 0px;
         width: 3rem;
-        filter: blur(3px) drop-shadow(0px 0px 20px white);
+        filter: drop-shadow(0px 0px 20px white);
     } 
 
     .light_beige{
