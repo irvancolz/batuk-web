@@ -51,7 +51,6 @@
         .call(initFakeEvent)
         .to('.inside', {filter: 'brightness(1)', duration: .3})
         .from(".lightshow", {opacity: 0})
-        .fromTo('.inside', { scale: 1.25, duration: fadeDuration}, { scale: 1, duration: fadeDuration})
 
     })
 
@@ -93,7 +92,7 @@
 
     .inside{
         filter: brightness(0.1);
-        transform-origin: 10% 50%;
+        /* transform-origin: 10% 50%; */
     }
 
 

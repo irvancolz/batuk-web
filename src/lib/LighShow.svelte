@@ -99,22 +99,27 @@
     }
     .lamp{
         position: relative;
+        --bg: rgb(9, 117, 225);
         --glare:linear-gradient(180deg, rgba(9, 117, 225, 0.751) 0%, rgba(9,118,225,0.751) 52%, rgba(9,118,225,0.2518384062609419) 87%, rgba(9,118,225,0) 100%);
         --light: linear-gradient(180deg, rgb(9, 117, 225) 0%, rgba(9, 117, 225,1) 20%,  rgba(9, 117, 225,0.3)  60%, rgba(9, 117, 225,0)  70%);
     }
     .lamp.purple{
+        --bg: rgb(222, 23, 222);
         --glare:linear-gradient(180deg, rgba(222, 23, 222, 0.751) 0%, rgba(222, 23, 222,0.751) 52%, rgba(222, 23, 222,0.2518384062609419) 87%, rgba(222, 23, 222,0) 100%);
         --light: linear-gradient(180deg, rgb(222, 23, 222) 0%, rgba(222, 23, 222,1) 20%,  rgba(222, 23, 222,0.3)  60%, rgba(222, 23, 222,0)  70%);
     }
     .lamp.aqua{
+        --bg:rgb(20, 227, 227);
         --glare:linear-gradient(180deg, rgba(20, 227, 227, 0.751) 0%, rgba(20, 227, 227,0.751) 52%, rgba(20, 227, 227,0.2518384062609419) 87%, rgba(20, 227, 227,0) 100%);
         --light: linear-gradient(180deg, rgb(20, 227, 227) 0%, rgba(20, 227, 227,1) 20%,  rgba(20, 227, 227,0.3)  60%, rgba(20, 227, 227,0)  70%);
     }
     .lamp.lime{
+        --bg: rgb(83, 231, 27);
         --glare:linear-gradient(180deg, rgba(183, 231, 27, 0.751) 0%, rgba(183, 231, 27,0.751) 52%, rgba(183, 231, 27,0.2518384062609419) 87%, rgba(183, 231, 27,0) 100%);
         --light: linear-gradient(180deg, rgb(183, 231, 27) 0%, rgba(183, 231, 27,1) 20%,  rgba(183, 231, 27,0.3)  60%, rgba(183, 231, 27,0)  70%);
     }
     .lamp.pink{
+        --bg: rgb(219, 44, 73);
         --glare:linear-gradient(180deg, rgba(219, 44, 73, 0.751) 0%, rgba(219, 44, 73,0.751) 52%, rgba(219, 44, 73,0.2518384062609419) 87%, rgba(219, 44, 73,0) 100%);
         --light: linear-gradient(180deg, rgb(219, 44, 73) 0%, rgba(219, 44, 73,1) 20%,  rgba(219, 44, 73,0.3)  60%, rgba(219, 44, 73,0)  70%);
     }
@@ -174,6 +179,7 @@
         border-bottom-left-radius: 2.5rem 5rem;
         border-bottom-right-radius: 2.5rem 5rem;
         height: 1000px;
+        background: var(--bg);
     }
     
     .light{
@@ -181,13 +187,11 @@
         border-top-left-radius: 1.25rem 20rem;
         border-top-right-radius: 1.25rem 20rem;
         z-index: 1;
-        background: rgb(9, 117, 225);
         background: var(--light);
     }
     
     .glare{
         width: 5rem;
-        background: rgb(9,118,225);
         background: var(--glare);
         filter: blur(5px);
     }
