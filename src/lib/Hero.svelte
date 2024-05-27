@@ -14,7 +14,6 @@
     gsap.registerPlugin(ScrollTrigger)
 
     let audio;
-    let paused = true
 
     function togglePlay(){
         if(!audio.paused){
@@ -30,7 +29,7 @@
         audio.dispatchEvent(evt)
     }
 
-    onMount(() => {
+    onMount(async () => {
         audio.volume = .1
         const fadeDuration = 10
         const scale = 1.05
@@ -40,6 +39,7 @@
             pin: true,
             scrub: true
         }})
+
         tl.to('.door', {rotateY: '-105deg', duration: 20})
         .fromTo('.door', { scale: 1, xPercent: 0, duration: 3,}, { scale: scale, xPercent: -2, duration: fadeDuration})
         .to('.light', { opacity: 0}, '<')
@@ -50,6 +50,7 @@
         .to('.outside_open', { opacity: 0, scale: scale, duration: fadeDuration}, '<')
         .call(initFakeEvent)
         .to('.inside', {filter: 'brightness(1)', duration: .3})
+        .from(".lightshow", {opacity: 0})
         .fromTo('.inside', { scale: 1.25, duration: fadeDuration}, { scale: 1, duration: fadeDuration})
 
     })
