@@ -1,15 +1,37 @@
 <script>
     import img2 from '$lib/images/house2.png'
     import img3 from '$lib/images/house3.png'
+    import audioMp3 from '$lib/audio/audio.mp3'
+    import audioWav from '$lib/audio/audio.wav'
+    import audioOgg from '$lib/audio/audio.ogg'
     import doorFront from "$lib/images/Door.png"
     import doorBack from "$lib/images/Door-back.png"
     import {gsap} from 'gsap';
     import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
   import { onMount } from 'svelte';
+  import LighShow from './LighShow.svelte';
 
     gsap.registerPlugin(ScrollTrigger)
 
+    let audio;
+    let paused = true
+
+    function togglePlay(){
+        if(!audio.paused){
+            audio.pause()
+            return
+        }
+        audio.currentTime = 0
+        audio.play()
+    }
+
+    function initFakeEvent(){
+        const evt = new Event('click')
+        audio.dispatchEvent(evt)
+    }
+
     onMount(() => {
+        audio.volume = .1
         const fadeDuration = 10
         const scale = 1.05
         const tl = gsap.timeline({ scrollTrigger: {
@@ -26,6 +48,7 @@
         .to('.background', { opacity: 0}, '<')
         .to('.door_overlay', { opacity: 0}, '<')
         .to('.outside_open', { opacity: 0, scale: scale, duration: fadeDuration}, '<')
+        .call(initFakeEvent)
         .to('.inside', {filter: 'brightness(1)', duration: .3})
         .fromTo('.inside', { scale: 1.25, duration: fadeDuration}, { scale: 1, duration: fadeDuration})
 
@@ -35,6 +58,7 @@
 
 <div class="container">
     <img class="inside" src={img3} alt="">
+    <LighShow class='lightshow' />
     <div class="background">
         <div class="light light_right light_beige first"></div>
         <div class="light light_right light_purple"></div>
@@ -50,6 +74,11 @@
         <img class="door_front" src={doorFront} alt="">
         <img class="door_back" src={doorBack} alt="">
     </div>
+    <audio bind:this={audio} class="bg_music" loop on:click={togglePlay} >
+        <source src={audioMp3} type="audio/mpeg">
+        <source src={audioOgg} type="image/ogg">
+        <source src={audioWav} type="image/wav">
+    </audio>
 </div>
 
 <style>
@@ -152,6 +181,14 @@
         rotate: -40deg;
         animation: light_right 2.5s ease-in-out infinite;
         right: 0;
+    }
+
+    .bg_music{
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        opacity: 0;
+        position: absolute;
     }
 
 
