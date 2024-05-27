@@ -52,7 +52,7 @@
         .to('.outside_open', { opacity: 0, scale: scale, duration: fadeDuration}, '<')
         .call(initFakeEvent)
         .to('.inside', {filter: 'brightness(1)', duration: .3})
-        .from(".lightshow", {opacity: 0})
+        .from(".lightshow", { opacity: 0, duration: fadeDuration * 3})
         .to('.inside', { duration: 40})
 
     })
@@ -61,7 +61,7 @@
 
 <div class="container">
     <img class="inside" src={img3} alt="">
-    <button class="play_btn" on:click={togglePlay}>hello</button>
+    <!-- <button class="play_btn" on:click={togglePlay}>hello</button> -->
     <LighShow class='lightshow' />
     <div class="background">
         <div class="light light_right light_beige first"></div>
@@ -78,7 +78,7 @@
         <img class="door_front" src={doorFront} alt="">
         <img class="door_back" src={doorBack} alt="">
     </div>
-    <audio bind:this={audio} class="bg_music" loop>
+    <audio bind:this={audio} class="bg_music" loop on:click={togglePlay}>
         <source src={audioMp3} type="audio/mpeg">
         <source src={audioOgg} type="image/ogg">
         <source src={audioWav} type="image/wav">
@@ -95,7 +95,7 @@
     }
 
     .inside{
-        /* filter: brightness(0.1); */
+        filter: brightness(0.1);
     }
 
     .play_btn{
