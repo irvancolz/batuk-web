@@ -6,6 +6,8 @@
     import audioOgg from '$lib/audio/audio.ogg'
     import doorFront from "$lib/images/Door.png"
     import doorBack from "$lib/images/Door-back.png"
+    import play from '$lib/images/play.png'
+    import pause from '$lib/images/pause.png'
     import {gsap} from 'gsap';
     import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
   import { onMount } from 'svelte';
@@ -29,7 +31,7 @@
         audio.dispatchEvent(evt)
     }
 
-    onMount(async () => {
+    onMount(() => {
         audio.volume = .1
         const fadeDuration = 10
         const scale = 1.05
@@ -51,6 +53,7 @@
         .call(initFakeEvent)
         .to('.inside', {filter: 'brightness(1)', duration: .3})
         .from(".lightshow", {opacity: 0})
+        .to('.inside', { duration: 40})
 
     })
 
@@ -58,6 +61,7 @@
 
 <div class="container">
     <img class="inside" src={img3} alt="">
+    <button class="play_btn" on:click={togglePlay}>hello</button>
     <LighShow class='lightshow' />
     <div class="background">
         <div class="light light_right light_beige first"></div>
@@ -74,7 +78,7 @@
         <img class="door_front" src={doorFront} alt="">
         <img class="door_back" src={doorBack} alt="">
     </div>
-    <audio bind:this={audio} class="bg_music" loop on:click={togglePlay} >
+    <audio bind:this={audio} class="bg_music" loop>
         <source src={audioMp3} type="audio/mpeg">
         <source src={audioOgg} type="image/ogg">
         <source src={audioWav} type="image/wav">
@@ -91,11 +95,22 @@
     }
 
     .inside{
-        filter: brightness(0.1);
-        /* transform-origin: 10% 50%; */
+        /* filter: brightness(0.1); */
     }
 
-
+    .play_btn{
+        position: absolute;
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        width: 2rem;
+        right: 16.25vw;
+        top: 56.5vh;
+        /* background-color: transparent; */
+        outline-color: transparent;
+        border-color: transparent;
+        cursor: pointer;
+    }
     .door, .door_overlay{
         position: absolute;
         aspect-ratio: 1034/1800;
